@@ -4,6 +4,12 @@ import { isAuth, isGuest } from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
 
+router.post("/logout", (req, res) => {
+  console.log("Logging out user:", req.user);
+  res.clearCookie("auth");
+  res.end();
+});
+
 router.post("/register", isGuest, async (req, res, next) => {
   const userData = req.body;
   try {
@@ -42,12 +48,6 @@ router.post("/login", isGuest, async (req, res, next) => {
   } catch (err) {
     return next(err);
   }
-});
-
-router.post("/logout", isAuth, (req, res) => {
-  console.log("Logging out user:", req.user);
-  res.clearCookie("auth");
-  res.end();
 });
 
 router.get("/user", async (req, res) => {
