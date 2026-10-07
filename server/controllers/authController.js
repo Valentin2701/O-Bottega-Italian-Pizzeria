@@ -24,7 +24,7 @@ router.post("/register", isGuest, async (req, res, next) => {
     res.cookie("auth", result.token, {
       httpOnly: true,
       secure: true,
-      sameSite: "Strict",
+      sameSite: "none",
       maxAge: 24 * 60 * 60 * 1000,
     });
     res.json({ user: result.user, message: "Registered successfully!" });
@@ -41,7 +41,7 @@ router.post("/login", isGuest, async (req, res, next) => {
     res.cookie("auth", result.token, {
       httpOnly: true,
       secure: true,
-      sameSite: "Strict",
+      sameSite: "none",
       maxAge: 24 * 60 * 60 * 1000,
     });
     res.json({ user: result.user, message: "Logged in succesfully" });
