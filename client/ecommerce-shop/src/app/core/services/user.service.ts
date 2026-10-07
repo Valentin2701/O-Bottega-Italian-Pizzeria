@@ -76,6 +76,8 @@ export class UserService {
       .post<void>("/api/logout", {})
       .pipe(
         tap(() => {
+          console.log("User logged out successfully.");
+
           this.user$$.next(null);
           this.router.navigate(["/"]);
         })

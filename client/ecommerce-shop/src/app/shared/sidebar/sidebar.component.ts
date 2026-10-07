@@ -11,6 +11,8 @@ export class SidebarComponent {
   constructor(public userService: UserService){}
 
   logout(){
-    this.userService.logout().subscribe();
+    this.userService.logout().subscribe(() => {
+      console.log("Logout successful");
+    });
   }
 }
