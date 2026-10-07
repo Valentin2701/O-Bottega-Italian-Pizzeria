@@ -4,7 +4,6 @@ import { configExpress } from "./configs/configExpress.js";
 import { router as routes } from "./routes.js";
 import { authMiddleware } from "./middlewares/authMiddleware.js";
 import { errorMiddleware } from "./middlewares/errorMiddleware.js";
-import { PORT, DBURL } from "./env/env.js";
 
 const app = express();
 
