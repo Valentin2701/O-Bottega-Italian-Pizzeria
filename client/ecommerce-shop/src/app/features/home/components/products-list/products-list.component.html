@@ -1,0 +1,17 @@
+<div class="product-grid">
+
+  <div class="product-container">
+
+    <div
+      class="product-row"
+      *ngFor="let row of rows"
+    >
+      <app-product
+        *ngFor="let product of row"
+        [product]="product"
+      />
+    </div>
+
+  </div>
+
+</div>

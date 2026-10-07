@@ -1,0 +1,195 @@
+<div class="product-container">
+  <div class="product-wrapper">
+
+    <div class="product-visual">
+      <div class="image-frame">
+        <div class="image-glow"></div>
+        <span class="image-badge">O'BOTTEGA</span>
+
+        <img
+          loading="lazy"
+          src="{{product?.image}}"
+          class="product-main-image"
+          alt="{{product?.name}} image"
+        />
+
+        <div class="image-caption">
+          <span>AUTHENTIC</span>
+          <span>ITALIAN PIZZA</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-info">
+
+      <div class="product-kicker">
+        <span class="kicker-line"></span>
+        FROM O'BOTTEGA'S KITCHEN
+      </div>
+
+      <h1 class="product-title">
+        {{product?.name}}
+      </h1>
+
+      <div class="product-intro">
+        Carefully prepared with the spirit of authentic Italian pizzeria
+        tradition.
+      </div>
+
+      <div class="product-meta">
+        <div class="meta-item">
+          <span class="meta-label">PRODUCT</span>
+          <span class="meta-value">{{product?.code}}</span>
+        </div>
+
+        <div class="meta-divider"></div>
+
+        <div class="meta-item">
+          <span class="meta-label">PIZZA TYPE</span>
+          <span class="meta-value">{{product?.brand}}</span>
+        </div>
+      </div>
+
+      <div class="price-row">
+        <div>
+          <span class="price-label">PRICE</span>
+          <p class="price">${{product?.price}}</p>
+        </div>
+
+        <div class="price-note">
+          <span class="price-dot"></span>
+          Freshly prepared
+        </div>
+      </div>
+
+      <div class="description-section">
+        <span class="section-label">ABOUT THIS PIZZA</span>
+
+        <p
+          class="product-description purchased-message"
+          *ngIf="isBought"
+        >
+          You have already purchased this pizza.
+        </p>
+
+        <p class="product-description">
+          {{product?.description}}
+        </p>
+      </div>
+
+      <!-- GUEST -->
+      <ng-container *ngIf="!isLoggedIn">
+
+        <div class="guest-message">
+          <div class="guest-icon">✦</div>
+
+          <div>
+            <strong>Ready for your next pizza night?</strong>
+            <p>
+              Create an account to add pizzas to your cart and place your
+              order.
+            </p>
+          </div>
+        </div>
+
+        <div class="action-group guest-action">
+          <button
+            type="button"
+            class="buy-button-wrapper"
+            tabindex="0"
+            routerLink="/register"
+          >
+            <span class="buy-button-text">Create an Account</span>
+            <span class="button-arrow">→</span>
+          </button>
+
+          <button
+            type="button"
+            class="secondary-action"
+            routerLink="/login"
+          >
+            Already have an account? <strong>Log in</strong>
+          </button>
+        </div>
+
+      </ng-container>
+
+      <!-- LOGGED IN -->
+      <ng-container *ngIf="isLoggedIn">
+
+        <ng-container *ngIf="isOwner">
+
+          <div class="owner-label">PRODUCT MANAGEMENT</div>
+
+          <div class="action-group">
+
+            <button
+              type="button"
+              class="buy-button-wrapper edit-action"
+              tabindex="0"
+              routerLink="/products/edit/{{product?._id}}"
+            >
+              <span class="buy-button-text">Edit Pizza</span>
+            </button>
+
+            <button
+              type="button"
+              class="buy-button-wrapper delete-action"
+              tabindex="0"
+              (click)="remove()"
+            >
+              <span class="buy-button-text">Delete</span>
+            </button>
+
+          </div>
+
+        </ng-container>
+
+        <ng-container *ngIf="!isOwner">
+
+          <ng-container *ngIf="!isInCart">
+
+            <div class="action-group single-action">
+
+              <button
+                type="button"
+                class="buy-button-wrapper"
+                tabindex="0"
+                (click)="addToCart()"
+              >
+                <span class="buy-button-text">Add to Cart</span>
+                <span class="button-arrow">→</span>
+              </button>
+
+            </div>
+
+          </ng-container>
+
+          <ng-container *ngIf="isInCart">
+
+            <div class="cart-status">
+              <span class="cart-status-icon">✓</span>
+
+              <div>
+                <strong>Already in your cart</strong>
+                <p>
+                  This pizza is waiting for you in your cart.
+                </p>
+              </div>
+            </div>
+
+          </ng-container>
+
+        </ng-container>
+
+      </ng-container>
+
+      <div class="back-link">
+        <a routerLink="/">
+          ← Back to the menu
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<form
+  class="search-form"
+  role="search"
+>
+  <div class="search-container" role="search">
+    <div class="search-bar">
+
+      <label for="searchInput" class="visually-hidden">
+        Search
+      </label>
+
+      <input
+        class="search-text"
+        name="search"
+        id="searchInput"
+        tabindex="0"
+        role="searchbox"
+        placeholder="Search for a pizza..."
+        [(ngModel)]="query"
+        (keyup.enter)="search()"
+      />
+
+      <img
+        loading="lazy"
+        src="https://cdn.builder.io/api/v1/image/assets/TEMP/b8156fb96251bf8b771aa408b4f2a811a295131e749fc68c4649edf12e7a53f3?placeholderIfAbsent=true&apiKey=637d52b7836245638b3cb5f84c1adefc"
+        class="search-icon"
+        alt=""
+      />
+
+    </div>
+  </div>
+</form>

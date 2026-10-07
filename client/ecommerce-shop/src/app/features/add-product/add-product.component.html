@@ -1,0 +1,345 @@
+<div class="product-form-page">
+
+  <div class="product-form-shell">
+
+    <div class="form-intro">
+
+      <span class="form-kicker">
+        O'BOTTEGA • MENU MANAGEMENT
+      </span>
+
+      <h1>Create a new pizza</h1>
+
+      <p>
+        Add a new pizza or menu item to the O'Bottega kitchen.
+      </p>
+
+      <div class="intro-decoration">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+    </div>
+
+    <div class="product-form-card">
+
+      <div class="form-card-header">
+        <span class="step-label">NEW MENU ITEM</span>
+
+        <h2>Pizza details</h2>
+
+        <p>
+          Fill in the information that customers will see on the menu.
+        </p>
+      </div>
+
+      <div class="form-content">
+
+        <form
+          class="form"
+          [formGroup]="form"
+          (ngSubmit)="create()"
+        >
+
+          <div class="form-section">
+
+            <div class="form-section-heading">
+              <span class="section-number">01</span>
+
+              <div>
+                <h3>Basic information</h3>
+                <p>Give your pizza a name and identity.</p>
+              </div>
+            </div>
+
+            <div class="field-grid">
+
+              <div class="field-group full-width">
+
+                <label for="name" class="input-label">
+                  Pizza name
+                </label>
+
+                <input
+                  type="text"
+                  id="name"
+                  class="input-field"
+                  placeholder="e.g. Margherita"
+                  required
+                  autocomplete="off"
+                  formControlName="name"
+                />
+
+                <ng-container *ngIf="form.get('name')?.touched">
+
+                  <p
+                    class="error"
+                    *ngIf="form.get('name')?.errors?.['required']"
+                  >
+                    Pizza name is required.
+                  </p>
+
+                  <p
+                    class="error"
+                    *ngIf="form.get('name')?.errors?.['minlength']"
+                  >
+                    Name must be at least 2 characters long.
+                  </p>
+
+                </ng-container>
+
+              </div>
+
+              <div class="field-group">
+
+                <label for="code" class="input-label">
+                  Product code
+                </label>
+
+                <input
+                  type="text"
+                  id="code"
+                  class="input-field"
+                  placeholder="e.g. MAR-001"
+                  required
+                  autocomplete="off"
+                  formControlName="code"
+                />
+
+                <ng-container *ngIf="form.get('code')?.touched">
+
+                  <p
+                    class="error"
+                    *ngIf="form.get('code')?.errors?.['required']"
+                  >
+                    Product code is required.
+                  </p>
+
+                </ng-container>
+
+              </div>
+
+              <div class="field-group">
+
+                <label for="brand" class="input-label">
+                  Type
+                </label>
+
+                <input
+                  type="text"
+                  id="brand"
+                  class="input-field"
+                  placeholder="O'Bottega"
+                  required
+                  autocomplete="off"
+                  formControlName="brand"
+                />
+
+                <ng-container *ngIf="form.get('brand')?.touched">
+
+                  <p
+                    class="error"
+                    *ngIf="form.get('brand')?.errors?.['required']"
+                  >
+                    Type is required.
+                  </p>
+
+                  <p
+                    class="error"
+                    *ngIf="form.get('brand')?.errors?.['brand']"
+                  >
+                    Type must be at least 2 characters long.
+                  </p>
+
+                </ng-container>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="form-section">
+
+            <div class="form-section-heading">
+              <span class="section-number">02</span>
+
+              <div>
+                <h3>Price & presentation</h3>
+                <p>Set the price and provide the pizza image.</p>
+              </div>
+            </div>
+
+            <div class="field-grid">
+
+              <div class="field-group">
+
+                <label for="price" class="input-label">
+                  Price
+                </label>
+
+                <div class="price-input-wrapper">
+
+                  <span class="currency-symbol">$</span>
+
+                  <input
+                    type="number"
+                    id="price"
+                    class="input-field price-field"
+                    placeholder="0.00"
+                    required
+                    formControlName="price"
+                  />
+
+                </div>
+
+                <ng-container *ngIf="form.get('price')?.touched">
+
+                  <p
+                    class="error"
+                    *ngIf="form.get('price')?.errors?.['required']"
+                  >
+                    Price is required.
+                  </p>
+
+                  <p
+                    class="error"
+                    *ngIf="form.get('price')?.errors?.['min']"
+                  >
+                    Price must be a positive number.
+                  </p>
+
+                </ng-container>
+
+              </div>
+
+              <div class="field-group">
+
+                <label for="image" class="input-label">
+                  Image URL
+                </label>
+
+                <input
+                  type="text"
+                  id="image"
+                  class="input-field"
+                  placeholder="https://..."
+                  required
+                  autocomplete="off"
+                  formControlName="image"
+                />
+
+                <ng-container *ngIf="form.get('image')?.touched">
+
+                  <p
+                    class="error"
+                    *ngIf="form.get('image')?.errors?.['required']"
+                  >
+                    Image is required.
+                  </p>
+
+                  <p
+                    class="error"
+                    *ngIf="form.get('image')?.errors?.['pattern']"
+                  >
+                    Please enter a valid image URL.
+                  </p>
+
+                </ng-container>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="form-section">
+
+            <div class="form-section-heading">
+              <span class="section-number">03</span>
+
+              <div>
+                <h3>Description</h3>
+                <p>Tell customers what makes this pizza special.</p>
+              </div>
+            </div>
+
+            <div class="field-group">
+
+              <label for="description" class="input-label">
+                Pizza description
+              </label>
+
+              <textarea
+                id="description"
+                class="input-field description-field"
+                placeholder="Describe the pizza, its character and what customers can expect..."
+                required
+                formControlName="description"
+              ></textarea>
+
+              <div class="field-hint">
+                Keep it clear, appetizing and easy to read.
+              </div>
+
+              <ng-container *ngIf="form.get('description')?.touched">
+
+                <p
+                  class="error"
+                  *ngIf="form.get('description')?.errors?.['required']"
+                >
+                  Description is required.
+                </p>
+
+                <p
+                  class="error"
+                  *ngIf="form.get('description')?.errors?.['minlength']"
+                >
+                  Description must be at least 20 characters long.
+                </p>
+
+                <p
+                  class="error"
+                  *ngIf="form.get('description')?.errors?.['maxlength']"
+                >
+                  Description must be less than 300 characters long.
+                </p>
+
+              </ng-container>
+
+            </div>
+
+          </div>
+
+          <div class="form-actions">
+
+            <button
+              type="button"
+              class="back-button"
+              routerLink="/"
+            >
+              <span>←</span>
+              Back to menu
+            </button>
+
+            <button
+              type="submit"
+              class="submit-button"
+              [disabled]="form.invalid"
+            >
+              <span>Create pizza</span>
+              <span class="submit-arrow">→</span>
+            </button>
+
+          </div>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

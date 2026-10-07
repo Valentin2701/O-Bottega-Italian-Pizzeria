@@ -1,0 +1,88 @@
+<div class="sidebar">
+
+  <div class="sidebar-header">
+
+    <div class="logo-mark">
+      <img
+        src="assets/images/logo.png"
+        alt="Store logo"
+        width="150px"
+      />
+    </div>
+
+    <h2>O'Bottega</h2>
+
+    <span>ITALIAN PIZZA</span>
+
+  </div>
+
+
+  <ul class="nav-list">
+
+    <li>
+      <a routerLink="/">
+        <span>01</span>
+        Home
+      </a>
+    </li>
+
+
+    <ng-container *ngIf="userService.getUser()">
+
+      <!-- Administrator-only item -->
+      <li *ngIf="userService.isAdmin()">
+        <a routerLink="/products/create">
+          <span>02</span>
+          Add pizza
+        </a>
+      </li>
+
+      <!-- Cart -->
+      <li>
+        <a routerLink="/products/cart">
+          <span>{{ userService.isAdmin() ? '03' : '02' }}</span>
+          Cart
+        </a>
+      </li>
+
+      <!-- Logout -->
+      <li
+        class="logout-item"
+        (click)="logout()"
+      >
+        <a>
+          <span>{{ userService.isAdmin() ? '04' : '03' }}</span>
+          Logout
+        </a>
+      </li>
+
+    </ng-container>
+
+
+    <ng-container *ngIf="!userService.getUser()">
+
+      <li>
+        <a routerLink="/register">
+          <span>02</span>
+          Register
+        </a>
+      </li>
+
+      <li>
+        <a routerLink="/login">
+          <span>03</span>
+          Login
+        </a>
+      </li>
+
+    </ng-container>
+
+  </ul>
+
+
+  <div class="sidebar-footer">
+    <span>BUON APPETITO</span>
+    <small>O'Bottega Italian Pizza</small>
+  </div>
+
+</div>

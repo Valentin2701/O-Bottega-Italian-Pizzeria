@@ -1,0 +1,15 @@
+<div class="content" [ngClass]="{ shifted: sidebarOpen }">
+  <app-nav
+    [sidebarOpen]="sidebarOpen"
+    [toggleSidebar]="toggleSidebar"
+    (outputData)="getOutput($event)"
+  />
+
+  <app-global-error />
+
+  <app-loader [isLoading]="isLoading | async"></app-loader>
+
+  <router-outlet />
+
+  <app-footer />
+</div>

@@ -1,0 +1,302 @@
+<div class="auth-page">
+  <div class="auth-card">
+
+    <div class="auth-header">
+      <div class="brand-mark">O'B</div>
+
+      <span class="auth-kicker">O'BOTTEGA ITALIAN PIZZA</span>
+
+      <h1>Create your account</h1>
+
+      <p>
+        Join O'Bottega and make your next pizza night easier.
+      </p>
+    </div>
+
+    <div class="form-section">
+
+      <div class="form-intro">
+        <span>YOUR DETAILS</span>
+        <p>Tell us a little about yourself to get started.</p>
+      </div>
+
+      <form
+        class="registration-form"
+        [formGroup]="form"
+        (ngSubmit)="register()"
+      >
+
+        <div class="form-row">
+
+          <div class="form-field">
+            <label for="firstName" class="input-label">First name</label>
+
+            <input
+              type="text"
+              id="firstName"
+              class="input-field"
+              required
+              aria-label="First name"
+              formControlName="firstName"
+              placeholder="Your first name"
+            />
+
+            <ng-container *ngIf="form.get('firstName')?.touched">
+              <p class="error" *ngIf="form.get('firstName')?.errors?.['required']">
+                First name is required.
+              </p>
+
+              <p class="error" *ngIf="form.get('firstName')?.errors?.['minlength']">
+                First name must be at least 2 characters long.
+              </p>
+            </ng-container>
+          </div>
+
+          <div class="form-field">
+            <label for="lastName" class="input-label">Last name</label>
+
+            <input
+              type="text"
+              id="lastName"
+              class="input-field"
+              required
+              aria-label="Last name"
+              formControlName="lastName"
+              placeholder="Your last name"
+            />
+
+            <ng-container *ngIf="form.get('lastName')?.touched">
+              <p class="error" *ngIf="form.get('lastName')?.errors?.['required']">
+                Last name is required.
+              </p>
+
+              <p class="error" *ngIf="form.get('lastName')?.errors?.['minlength']">
+                Last name must be at least 4 characters long.
+              </p>
+            </ng-container>
+          </div>
+
+        </div>
+
+        <div class="form-field">
+          <label for="phoneNumber" class="input-label">Phone number</label>
+
+          <input
+            type="tel"
+            id="phoneNumber"
+            class="input-field"
+            required
+            aria-label="Phone number"
+            formControlName="number"
+            placeholder="+359 ..."
+          />
+
+          <ng-container *ngIf="form.get('number')?.touched">
+            <p class="error" *ngIf="form.get('number')?.errors?.['required']">
+              Phone number is required.
+            </p>
+
+            <p class="error" *ngIf="form.get('number')?.errors?.['pattern']">
+              Phone number is invalid.
+            </p>
+          </ng-container>
+        </div>
+
+        <div class="form-field">
+          <label for="email" class="input-label">E-mail</label>
+
+          <input
+            type="email"
+            id="email"
+            class="input-field"
+            required
+            aria-label="Email address"
+            formControlName="email"
+            placeholder="you@example.com"
+          />
+
+          <ng-container *ngIf="form.get('email')?.touched">
+            <p class="error" *ngIf="form.get('email')?.errors?.['required']">
+              Email is required.
+            </p>
+
+            <p class="error" *ngIf="form.get('email')?.errors?.['email']">
+              Email is invalid.
+            </p>
+          </ng-container>
+        </div>
+
+        <div class="form-section-heading">
+          <span>DELIVERY DETAILS</span>
+        </div>
+
+        <div class="form-row">
+
+          <div class="form-field">
+            <label for="country" class="input-label">Country</label>
+
+            <input
+              type="text"
+              id="country"
+              class="input-field"
+              required
+              aria-label="Country"
+              formControlName="country"
+              placeholder="Country"
+            />
+
+            <ng-container *ngIf="form.get('country')?.touched">
+              <p class="error" *ngIf="form.get('country')?.errors?.['required']">
+                Country is required.
+              </p>
+            </ng-container>
+          </div>
+
+          <div class="form-field">
+            <label for="city" class="input-label">City</label>
+
+            <input
+              type="text"
+              id="city"
+              class="input-field"
+              required
+              aria-label="City"
+              formControlName="city"
+              placeholder="City"
+            />
+
+            <ng-container *ngIf="form.get('city')?.touched">
+              <p class="error" *ngIf="form.get('city')?.errors?.['required']">
+                City is required.
+              </p>
+            </ng-container>
+          </div>
+
+        </div>
+
+        <div class="form-field">
+          <label for="address" class="input-label">Address</label>
+
+          <textarea
+            id="address"
+            class="address-field"
+            required
+            aria-label="Street address"
+            formControlName="address"
+            placeholder="Street, number, entrance..."
+          ></textarea>
+
+          <ng-container *ngIf="form.get('address')?.touched">
+            <p class="error" *ngIf="form.get('address')?.errors?.['required']">
+              Address is required.
+            </p>
+          </ng-container>
+        </div>
+
+        <div class="form-field zipcode-wrapper">
+          <label for="zipcode" class="input-label">Zipcode</label>
+
+          <input
+            type="text"
+            id="zipcode"
+            class="zipcode-field"
+            required
+            aria-label="Zipcode"
+            formControlName="ZIP"
+            placeholder="Zip code"
+          />
+
+          <ng-container *ngIf="form.get('ZIP')?.touched">
+            <p class="error" *ngIf="form.get('ZIP')?.errors?.['required']">
+              ZIP code is required.
+            </p>
+          </ng-container>
+        </div>
+
+        <div class="form-section-heading">
+          <span>SECURE YOUR ACCOUNT</span>
+        </div>
+
+        <ng-container formGroupName="passGroup">
+
+          <div class="form-field">
+            <label for="password" class="input-label">Password</label>
+
+            <input
+              type="password"
+              id="password"
+              class="input-field"
+              required
+              aria-label="Password"
+              formControlName="password"
+              placeholder="Create a password"
+            />
+
+            <ng-container *ngIf="form.get('passGroup')?.get('password')?.touched">
+              <p class="error" *ngIf="form.get('passGroup')?.get('password')?.errors?.['required']">
+                Password is required.
+              </p>
+
+              <p class="error" *ngIf="form.get('passGroup')?.get('password')?.errors?.['minlength']">
+                Password must be at least 8 characters long.
+              </p>
+            </ng-container>
+          </div>
+
+          <div class="form-field">
+            <label for="rePass" class="input-label">Repeat password</label>
+
+            <input
+              type="password"
+              id="rePass"
+              class="input-field"
+              required
+              aria-label="Repeat password"
+              formControlName="rePass"
+              placeholder="Repeat your password"
+            />
+
+            <ng-container *ngIf="form.get('passGroup')?.get('rePass')?.touched">
+              <p class="error" *ngIf="form.get('passGroup')?.get('rePass')?.errors?.['required']">
+                Repeat password is required.
+              </p>
+
+              <p class="error" *ngIf="form.get('passGroup')?.errors?.['passwordMissmatch']">
+                Passwords must match.
+              </p>
+            </ng-container>
+          </div>
+
+        </ng-container>
+
+        <div class="navigation-controls">
+          <button
+            type="submit"
+            class="next-button"
+            aria-label="Create account"
+            [disabled]="form.invalid"
+          >
+            <span>Create Account</span>
+            <span class="button-arrow">→</span>
+          </button>
+        </div>
+
+      </form>
+
+      <div class="login-prompt">
+        Already have an account?
+        <a routerLink="/login">Log in</a>
+      </div>
+
+      <button
+        type="button"
+        class="back-button"
+        aria-label="Go back"
+        routerLink="/"
+      >
+        ← Back to menu
+      </button>
+
+    </div>
+  </div>
+</div>

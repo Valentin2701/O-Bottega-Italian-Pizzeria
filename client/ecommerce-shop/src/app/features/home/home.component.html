@@ -1,0 +1,186 @@
+<div class="home-page">
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <div class="hero-copy">
+
+        <div class="eyebrow">
+          <span></span>
+          AUTENTICA PIZZERIA ITALIANA
+          <span></span>
+        </div>
+
+        <h1>
+          Pizza made with
+          <em>passion.</em>
+        </h1>
+
+        <p class="hero-description">
+          Traditional Italian recipes, fresh ingredients and a
+          perfectly baked crust — made for people who take pizza seriously.
+        </p>
+
+        <div class="hero-actions">
+          <a class="primary-action" href="#menu">
+            Explore our menu
+            <span>→</span>
+          </a>
+
+          <a class="secondary-action" href="#story">
+            Our story
+          </a>
+        </div>
+
+        <div class="hero-details">
+          <div>
+            <strong>48h</strong>
+            <span>Slow fermented dough</span>
+          </div>
+
+          <div class="detail-divider"></div>
+
+          <div>
+            <strong>100%</strong>
+            <span>Italian-inspired recipes</span>
+          </div>
+
+          <div class="detail-divider"></div>
+
+          <div>
+            <strong>∞</strong>
+            <span>Love for pizza</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="hero-visual">
+
+        <div class="hero-circle"></div>
+
+        <div class="hero-image-frame">
+          <img
+            src="assets/images/menu.png"
+            alt="Fresh Italian pizza"
+          >
+        </div>
+
+        <div class="floating-note">
+          <span class="note-icon">★</span>
+          <div>
+            <strong>Fresh from the oven</strong>
+            <small>Made to order</small>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- INTRODUCTION -->
+  <section class="story-section" id="story">
+
+    <div class="story-image">
+      <img
+        src="https://cdn.builder.io/api/v1/image/assets/TEMP/cf4087d39d3f505eb590f7578194f33f63e35887a1d60a15da23dd3b177e3caf?placeholderIfAbsent=true&apiKey=637d52b7836245638b3cb5f84c1adefc"
+        alt="O'Bottega Italian Pizza"
+      >
+    </div>
+
+    <div class="story-content">
+
+      <span class="section-label">BENVENUTI</span>
+
+      <h2>
+        A little taste of
+        <em>Italy.</em>
+      </h2>
+
+      <p>
+        At O'Bottega, we believe great pizza doesn't need to be complicated.
+        Good dough, excellent ingredients, a hot oven and a little patience
+        are all it takes.
+      </p>
+
+      <p>
+        Our menu is inspired by the timeless traditions of Italian
+        pizzerias, while keeping things fresh, simple and made for today.
+      </p>
+
+      <div class="story-signature">
+        <span>O'Bottega</span>
+        <small>ITALIAN PIZZA</small>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MENU -->
+  <section class="menu-section" id="menu">
+
+    <div class="menu-introduction">
+
+      <div>
+        <span class="section-label">FROM OUR OVEN</span>
+
+        <h2>
+          Our <em>pizzas</em>
+        </h2>
+      </div>
+
+      <p>
+        Discover our selection of handcrafted pizzas,
+        prepared with fresh ingredients and baked to perfection.
+      </p>
+
+    </div>
+
+    <app-search
+      (dataEmitter)="search($event)"
+    />
+
+    <app-products-list
+      [products]="products"
+    />
+
+  </section>
+
+
+  <!-- VALUES -->
+  <section class="values-section">
+
+    <div class="value-item">
+      <div class="value-number">01</div>
+      <h3>Fresh ingredients</h3>
+      <p>
+        Quality ingredients chosen to bring every pizza to life.
+      </p>
+    </div>
+
+    <div class="value-item">
+      <div class="value-number">02</div>
+      <h3>Handcrafted dough</h3>
+      <p>
+        Carefully prepared dough with time to develop its character.
+      </p>
+    </div>
+
+    <div class="value-item">
+      <div class="value-number">03</div>
+      <h3>Italian spirit</h3>
+      <p>
+        Simple food, generous portions and an obsession with good pizza.
+      </p>
+    </div>
+
+  </section>
+
+</div>

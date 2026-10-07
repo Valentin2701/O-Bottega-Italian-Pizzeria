@@ -1,0 +1,90 @@
+.top-nav {
+  position: relative;
+
+  min-height: 82px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 15px 24px;
+
+  background: #fffdf8;
+
+  border-bottom: 1px solid #e8dfd2;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.brand-name {
+  color: #23483b;
+
+  font-family: 'Playfair Display', Georgia, serif;
+
+  font-size: 29px;
+  font-weight: 700;
+
+  line-height: 1;
+}
+
+.brand-subtitle {
+  margin-top: 5px;
+
+  color: #b7472a;
+
+  font-size: 8px;
+  font-weight: 800;
+
+  letter-spacing: 3px;
+}
+
+.toggle-btn {
+  position: absolute;
+
+  left: 22px;
+
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #ded2c2;
+  border-radius: 5px;
+
+  background: #fffdf8;
+  color: #23483b;
+
+  font-size: 22px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.toggle-btn:hover {
+  background: #23483b;
+  color: white;
+}
+
+.toggle-btn:focus {
+  outline: 2px solid #c9974a;
+  outline-offset: 2px;
+}
+
+@media (max-width: 580px) {
+  .brand-name {
+    font-size: 24px;
+  }
+
+  .toggle-btn {
+    left: 12px;
+  }
+}

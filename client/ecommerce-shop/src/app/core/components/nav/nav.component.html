@@ -1,0 +1,29 @@
+<app-sidebar
+  *ngIf="sidebarOpen"
+/>
+
+<div class="top-nav">
+
+  <button
+    class="toggle-btn"
+    type="button"
+    (click)="toggleSidebar()"
+    (click)="sendData()"
+    aria-label="Open navigation menu"
+  >
+    ☰
+  </button>
+
+  <div class="brand">
+
+    <span class="brand-name">
+      O'Bottega
+    </span>
+
+    <span class="brand-subtitle">
+      ITALIAN PIZZA
+    </span>
+
+  </div>
+
+</div>

@@ -1,0 +1,148 @@
+<div class="cart-page">
+
+  <div class="cart-shell">
+
+    <div class="cart-header">
+      <div class="brand-mark">O'B</div>
+
+      <div class="cart-header-copy">
+        <span class="cart-kicker">O'BOTTEGA • ITALIAN PIZZA</span>
+        <h1>Your Order</h1>
+        <p>Everything you've chosen, ready for the table.</p>
+      </div>
+
+      <div class="pizza-count">
+        <span>{{ products.length }}</span>
+        <small>{{ products.length === 1 ? 'PIZZA' : 'PIZZAS' }}</small>
+      </div>
+    </div>
+
+    <div class="order-progress">
+      <div class="progress-step active">
+        <span class="progress-number">1</span>
+        <span>Your order</span>
+      </div>
+
+      <div class="progress-line"></div>
+
+      <div class="progress-step">
+        <span class="progress-number">2</span>
+        <span>Checkout</span>
+      </div>
+    </div>
+
+    <div class="cart-body">
+
+      <div class="order-section">
+
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker">FROM OUR KITCHEN</span>
+            <h2>Your pizzas</h2>
+          </div>
+
+          <button
+            type="button"
+            class="continue-shopping"
+            routerLink="/"
+          >
+            <span>←</span>
+            Continue shopping
+          </button>
+        </div>
+
+        <div class="products-list">
+
+          <ng-container *ngFor="let product of products">
+            <app-product [product]="product"></app-product>
+          </ng-container>
+
+        </div>
+
+        <div
+          class="empty-cart"
+          *ngIf="products.length === 0"
+        >
+          <div class="empty-cart-icon">🍕</div>
+
+          <h3>Your cart is waiting</h3>
+
+          <p>
+            Add a pizza from our menu and your order will appear here.
+          </p>
+
+          <button
+            type="button"
+            routerLink="/"
+            class="browse-menu-button"
+          >
+            Browse the menu
+            <span>→</span>
+          </button>
+        </div>
+
+      </div>
+
+      <aside class="order-summary">
+
+        <div class="summary-top">
+          <span class="section-kicker">ORDER SUMMARY</span>
+          <h2>Your total</h2>
+        </div>
+
+        <div class="summary-row">
+          <span>
+            {{ products.length }}
+            {{ products.length === 1 ? 'item' : 'items' }}
+          </span>
+
+          <strong>${{ sum }}</strong>
+        </div>
+
+        <div class="summary-divider"></div>
+
+        <div class="summary-total">
+          <span>Total</span>
+          <strong>${{ sum }}</strong>
+        </div>
+
+        <button
+          type="button"
+          class="checkout-button"
+          (click)="buyProducts()"
+          [disabled]="products.length === 0"
+        >
+          <span>Continue to checkout</span>
+          <span class="checkout-arrow">→</span>
+        </button>
+
+        <div class="secure-checkout">
+          <span class="secure-icon">✓</span>
+
+          <div>
+            <strong>Safe & secure checkout</strong>
+            <span>Your payment information is protected.</span>
+          </div>
+        </div>
+
+        <div class="payment-card">
+
+          <span class="payment-title">
+            We accept
+          </span>
+
+          <div class="payment-methods">
+            <span class="payment-badge">CARD</span>
+            <span class="payment-badge">VISA</span>
+            <span class="payment-badge">MC</span>
+          </div>
+
+        </div>
+
+      </aside>
+
+    </div>
+
+  </div>
+
+</div>

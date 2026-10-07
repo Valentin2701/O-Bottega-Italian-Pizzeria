@@ -1,0 +1,54 @@
+<article class="product-card">
+
+  <div class="pizza-image-area">
+
+    <div class="image-background"></div>
+
+    <img
+      loading="lazy"
+      [src]="product?.image"
+      [alt]="product?.name"
+      class="product-image"
+    >
+
+    <div class="pizza-badge">
+      O'BOTTEGA
+    </div>
+
+  </div>
+
+
+  <div class="product-info">
+
+    <div class="product-top">
+
+      <h3 class="product-title">
+        {{ product?.name }}
+      </h3>
+
+      <span class="product-price">
+        €{{ product?.price }}
+      </span>
+
+    </div>
+
+    <p class="product-description">
+      Handcrafted pizza prepared with fresh ingredients
+      and our signature dough.
+    </p>
+
+    <div class="navigation-controls">
+
+      <a
+        class="buy-button"
+        [routerLink]="'/products/' + product?._id"
+      >
+        <span>View pizza</span>
+        <span class="arrow">→</span>
+      </a>
+
+    </div>
+
+  </div>
+
+</article>
