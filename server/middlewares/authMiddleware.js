@@ -18,8 +18,15 @@ export const authMiddleware = async (req, res, next) => {
 };
 
 export const isAuth = (req, res, next) => {
-  if (!req.user) return res.status(402);
+  export const isAuth = (req, res, next) => {
+  if (!req.user) {
+    return res.status(401).json({
+      message: "Unauthorized"
+    });
+  }
+
   next();
+};
 };
 
 export const isGuest = (req, res, next) => {
