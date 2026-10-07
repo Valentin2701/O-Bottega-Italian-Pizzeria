@@ -4,7 +4,7 @@ import { isAuth, isGuest } from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
 
-router.post("/logout", (req, res) => {
+router.post("/logout", isAuth, (req, res) => {
   console.log("Logging out user:", req.user);
   res.clearCookie("auth");
   res.end();
