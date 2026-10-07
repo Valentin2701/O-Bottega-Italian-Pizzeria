@@ -43,39 +43,6 @@ router.post("/", isAuth, adminOnly, async (req, res, next) => {
   }
 });
 
-router.put("/:id", isAuth, adminOnly, async (req, res, next) => {
-  const productId = req.params.id;
-  const user = req.user;
-  const data = req.body;
-  const product = await productService.getSingle(
-    ObjectId.createFromHexString(productId)
-  );
-  try {
-    if (product.owner == user?._id)
-      await productService.edit(ObjectId.createFromHexString(productId), data);
-
-    res.status(200).end();
-  } catch (err) {
-    next(err);
-  }
-});
-
-router.delete("/:id", isAuth, adminOnly, async (req, res, next) => {
-  const user = req.user;
-  const productId = req.params.id;
-  const product = await productService.getSingle(
-    ObjectId.createFromHexString(productId)
-  );
-  try {
-    if (product.owner == user?._id)
-      await productService.remove(ObjectId.createFromHexString(productId));
-
-    res.status(200).end();
-  } catch (err) {
-    next(err);
-  }
-});
-
 router.post("/buy", isAuth, async (req, res, next) => {
   const { products } = req.body;
   const userId = req.user?._id;
@@ -152,6 +119,39 @@ router.get("/:id", async (req, res, next) => {
     const product = await productService.getSingle(productId);
 
     res.json(product);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.put("/:id", isAuth, adminOnly, async (req, res, next) => {
+  const productId = req.params.id;
+  const user = req.user;
+  const data = req.body;
+  const product = await productService.getSingle(
+    ObjectId.createFromHexString(productId)
+  );
+  try {
+    if (product.owner == user?._id)
+      await productService.edit(ObjectId.createFromHexString(productId), data);
+
+    res.status(200).end();
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.delete("/:id", isAuth, adminOnly, async (req, res, next) => {
+  const user = req.user;
+  const productId = req.params.id;
+  const product = await productService.getSingle(
+    ObjectId.createFromHexString(productId)
+  );
+  try {
+    if (product.owner == user?._id)
+      await productService.remove(ObjectId.createFromHexString(productId));
+
+    res.status(200).end();
   } catch (err) {
     next(err);
   }
