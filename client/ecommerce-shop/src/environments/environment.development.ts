@@ -1,3 +1,3 @@
 export const environment = {
-    apiURL: "http://localhost:5000"
+    apiURL: "https://o-bottega-italian-pizzeria.onrender.com"
 };

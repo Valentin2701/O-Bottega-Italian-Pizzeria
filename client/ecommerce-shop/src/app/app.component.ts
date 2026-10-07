@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from './core/services/user.service';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LoadingService } from './core/services/loading.service';
 
@@ -8,25 +7,25 @@ import { LoadingService } from './core/services/loading.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent {
+
   title = 'ecommerce-shop';
+
   isLoading: Observable<boolean>;
 
-  sidebarOpen: boolean = true;
+  sidebarOpen = true;
 
-  constructor(private userService: UserService, private loadingService: LoadingService){
+  constructor(
+    private loadingService: LoadingService
+  ) {
     this.isLoading = this.loadingService.loading$;
   }
 
-  ngOnInit(): void {
-      this.userService.initializeUser();
-  }
-
-  toggleSidebar(){
+  toggleSidebar() {
     this.sidebarOpen = !this.sidebarOpen;
   }
 
-  getOutput(sidebarOpen: boolean){
+  getOutput(sidebarOpen: boolean) {
     this.sidebarOpen = sidebarOpen;
   }
 }
