@@ -1,5 +1,4 @@
 import * as jwt from "../lib/jsonwebtoken.js";
-import { SECRET } from "../env/env.js";
 import { getCart } from "../services/productService.js";
 
 export const authMiddleware = async (req, res, next) => {
@@ -8,7 +7,7 @@ export const authMiddleware = async (req, res, next) => {
   if (!token) next();
 
   try {
-    const decodedToken = await jwt.verify(token, SECRET);
+    const decodedToken = await jwt.verify(token, process.env.SECRET);
 
     req.user = decodedToken;
 

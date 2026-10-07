@@ -17,11 +17,11 @@ app.use(routes);
 app.use(errorMiddleware);
 
 mongoose
-  .connect(DBURL)
+  .connect(process.env.DBURL)
   .then(() => {
     console.log("DB connected!");
-    app.listen(PORT, () =>
-      console.log(`Server is listening on port ${PORT}...`)
+    app.listen(process.env.PORT, () =>
+      console.log(`Server is listening on port ${process.env.PORT}...`)
     );
   })
   .catch((err) => console.log("Failed connecting DB", err));
