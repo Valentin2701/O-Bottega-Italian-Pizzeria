@@ -45,6 +45,7 @@ router.post("/login", isGuest, async (req, res, next) => {
 });
 
 router.post("/logout", isAuth, (req, res) => {
+  console.log("Logging out user:", req.user);
   res.clearCookie("auth");
   res.end();
 });

@@ -104,6 +104,7 @@ router.post("/search", async (req, res, next) => {
 router.post("/cart", isAuth, async (req, res, next) => {
   const productId = req.body.productId;
   const user = req.user;
+  console.log("Adding product to cart:", productId, "for user:", user?._id);
   try {
     const product = await productService.getSingle(productId);
     if (user?._id != product.owner)
