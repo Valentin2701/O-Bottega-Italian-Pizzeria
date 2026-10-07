@@ -6,7 +6,12 @@ const router = express.Router();
 
 router.post("/logout", isAuth, (req, res) => {
   console.log("Logging out user:", req.user);
-  res.clearCookie("auth");
+  res.clearCookie("auth", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+    path: "/"
+  });
   res.end();
 });
 
@@ -25,6 +30,7 @@ router.post("/register", isGuest, async (req, res, next) => {
       httpOnly: true,
       secure: true,
       sameSite: "none",
+      path: "/",
       maxAge: 24 * 60 * 60 * 1000,
     });
     res.json({ user: result.user, message: "Registered successfully!" });
@@ -42,6 +48,7 @@ router.post("/login", isGuest, async (req, res, next) => {
       httpOnly: true,
       secure: true,
       sameSite: "none",
+      path: "/",
       maxAge: 24 * 60 * 60 * 1000,
     });
     res.json({ user: result.user, message: "Logged in succesfully" });
