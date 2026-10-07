@@ -5,7 +5,6 @@ import cors from "cors";
 const corsOptions = {
   origin: "https://o-bottega.netlify.app",
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  credentials: true,
   allowedHeaders: ["Content-Type", "Authorization"]
 };
 
