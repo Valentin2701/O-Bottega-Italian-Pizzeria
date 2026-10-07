@@ -12,7 +12,7 @@ router.post("/logout", isAuth, (req, res) => {
     sameSite: "none",
     path: "/"
   });
-  res.end();
+  return res.status(200).json({ message: "Logged out successfully" });
 });
 
 router.post("/register", isGuest, async (req, res, next) => {

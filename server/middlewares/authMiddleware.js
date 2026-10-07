@@ -2,18 +2,21 @@ import * as jwt from "../lib/jsonwebtoken.js";
 import { getCart } from "../services/productService.js";
 
 export const authMiddleware = async (req, res, next) => {
-  const token = req.cookies["auth"];
+  const token = req.cookies?.auth;
 
-  if (!token) next();
+  if (!token) {
+    return next();
+  }
 
   try {
-    const decodedToken = await jwt.verify(token, process.env.SECRET);
+    const decodedToken = jwt.verify(token, process.env.SECRET);
 
     req.user = decodedToken;
 
-    next();
+    return next();
   } catch (err) {
-    res.clearCookie("auth");
+    req.user = undefined;
+    return next();
   }
 };
 
