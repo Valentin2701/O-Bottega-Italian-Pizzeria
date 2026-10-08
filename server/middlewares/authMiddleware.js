@@ -9,7 +9,7 @@ export const authMiddleware = async (req, res, next) => {
   }
 
   try {
-    const decodedToken = jwt.verify(token, process.env.SECRET);
+    const decodedToken = await jwt.verify(token, process.env.SECRET);
 
     req.user = decodedToken;
 

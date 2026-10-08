@@ -32,6 +32,7 @@ router.get("/cart", isAuth, async (req, res, next) => {
 
     res.status(200).json(user.cart);
   } catch (err) {
+    console.log("Error fetching cart from user:", user);
     next(err);
   }
 });
