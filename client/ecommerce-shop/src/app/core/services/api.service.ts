@@ -1,12 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '../types/Product';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
   private apiUrl = "/api/products";
+  private cartUpdatedSubject = new Subject<void>();
+  cartUpdated$ = this.cartUpdatedSubject.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -35,7 +38,7 @@ export class ApiService {
   }
 
   buyProducts(products: Product[]) {
-    return this.http.post<void>(`${this.apiUrl}/buy`, {products});
+    return this.http.post<void>(`${this.apiUrl}/buy`, { products });
   }
 
   searchProducts(search: string) {
@@ -46,11 +49,15 @@ export class ApiService {
     return this.http.post<void>(`${this.apiUrl}/cart`, { productId });
   }
 
-  getFromCart(){
+  getFromCart() {
     return this.http.get<Product[]>(`${this.apiUrl}/cart`);
   }
 
-  removeFromCart(productId: string){
+  removeFromCart(productId: string) {
     return this.http.delete<void>(`${this.apiUrl}/cart/${productId}`, {});
+  }
+
+  notifyCartUpdated() {
+    this.cartUpdatedSubject.next();
   }
 }

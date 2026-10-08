@@ -14,6 +14,9 @@ export class ProductComponent {
   constructor(private productService: ApiService, private router: Router){}
 
   removeProduct(){
-    this.productService.removeFromCart(this.product._id).subscribe(() => this.router.navigate([`/products/cart`], { queryParamsHandling: 'merge'}));
+    this.productService.removeFromCart(this.product._id).subscribe(() => {
+      this.productService.notifyCartUpdated();
+      this.router.navigate([`/products/cart`]);
+    });
   }
 }
