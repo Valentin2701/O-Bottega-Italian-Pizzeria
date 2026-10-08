@@ -21,10 +21,8 @@ export class ProductPageComponent implements OnInit {
   constructor(private router: Router, private routerActivate: ActivatedRoute, private productService: ApiService, private userService: UserService, private loadingService: LoadingService) { }
   addToCart() {
     this.productService.addProductToCart(this.product?._id).subscribe(() => {
-      this.router.navigate([`/products/${this.product?._id}`], { queryParamsHandling: 'merge', skipLocationChange: true }).then(() => {
-        window.location.reload();
-      });
-    });
+    this.isInCart = true;
+  });
   }
 
   remove() {
