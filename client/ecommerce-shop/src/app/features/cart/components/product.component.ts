@@ -14,8 +14,6 @@ export class ProductComponent {
   constructor(private productService: ApiService, private router: Router){}
 
   removeProduct(){
-    this.productService.removeFromCart(this.product._id).subscribe(() => this.router.navigate([`/products/cart`], { queryParamsHandling: 'merge', skipLocationChange: true }).then(() => {
-      window.location.reload();
-    }));
+    this.productService.removeFromCart(this.product._id).subscribe(() => this.router.navigate([`/products/cart`], { queryParamsHandling: 'merge', skipLocationChange: true }));
   }
 }
