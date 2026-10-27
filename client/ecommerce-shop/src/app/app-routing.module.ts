@@ -4,6 +4,7 @@ import { HomeComponent } from './features/home/home.component';
 import { IsGuestGuard } from './core/guards/guest.guard';
 import { LoggedInGuard } from './core/guards/routing.guard';
 import { adminGuard } from './core/guards/admin.guard';
+import { LawComponent } from './features/Law/law.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -43,9 +44,7 @@ const routes: Routes = [
       import('./features/product-page/product-page.module').then((m) => m.ProductPageModule),
   },
   {
-    path: 'fiqra/law',
-    loadChildren: () =>
-      import('./features/Law/law.module').then((m) => m.LawModule),
+    path: 'fiqra/law', component: LawComponent
   }
 ];
 
