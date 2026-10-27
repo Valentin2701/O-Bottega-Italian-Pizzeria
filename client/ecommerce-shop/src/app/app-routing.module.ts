@@ -42,6 +42,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./features/product-page/product-page.module').then((m) => m.ProductPageModule),
   },
+  {
+    path: 'fiqra/law',
+    loadChildren: () =>
+      import('./features/Law/law.module').then((m) => m.LawModule),
+  }
 ];
 
 @NgModule({
