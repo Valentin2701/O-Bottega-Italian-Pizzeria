@@ -9,6 +9,7 @@ import { EditModule } from './edit/edit.module';
 import { AddProductModule } from './add-product/add-product.module';
 import { ProductPageModule } from './product-page/product-page.module';
 import { CartModule } from './cart/cart.module';
+import { LawModule } from './Law/law.module';
 
 
 
@@ -19,6 +20,6 @@ import { CartModule } from './cart/cart.module';
     AppRoutingModule,
     RouterModule
   ],
-  exports: [HomeModule, RegisterModule, LoginModule, EditModule, AddProductModule, ProductPageModule, CartModule]
+  exports: [HomeModule, RegisterModule, LoginModule, EditModule, AddProductModule, ProductPageModule, CartModule, LawModule]
 })
 export class FeaturesModule { }
