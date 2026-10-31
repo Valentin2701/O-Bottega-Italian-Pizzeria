@@ -4,7 +4,7 @@ export const adminOnly = (req, res, next) => {
 
   if (!req.user) {
     return res.status(401).json({
-      message: "You must be logged in."
+      message: "You must be an admin to access this route."
     });
   }
 
